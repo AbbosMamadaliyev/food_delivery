@@ -14,7 +14,7 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16.0),
+      padding: const EdgeInsets.only(left: 16.0, bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,7 +26,7 @@ class _CategoriesState extends State<Categories> {
             ),
           ),
           SizedBox(
-            height: 110,
+            height: 104,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
@@ -48,11 +48,11 @@ class _CategoriesState extends State<Categories> {
       margin: EdgeInsets.only(left: 22, top: 18, right: 10),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
             color: Colors.black38,
-            blurRadius: 12,
+            blurRadius: 8,
           ),
         ],
       ),

@@ -13,7 +13,7 @@ class _PopularNowState extends State<PopularNow> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16.0, top: 28),
+      padding: const EdgeInsets.only(left: 16.0, top: 32),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
