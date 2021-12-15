@@ -5,6 +5,8 @@ import 'package:food_delivery/widgets/main_screen/main_screen.dart';
 import 'package:food_delivery/widgets/splash_screen/body/splash_body.dart';
 
 class SplashScreen extends StatefulWidget {
+  static String id = '/splashScreen';
+
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
@@ -33,6 +35,8 @@ class _SplashScreenState extends State<SplashScreen> {
   int currentIndex = 0;
   int select = 0;
 
+  final _pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -55,6 +59,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Expanded(
               child: PageView.builder(
+                controller: _pageController,
                 itemCount: splashBodies.length,
                 itemBuilder: (BuildContext context, int index) {
                   return splashBodies[index];
@@ -84,27 +89,49 @@ class _SplashScreenState extends State<SplashScreen> {
             children:
                 List.generate(splashBodies.length, (index) => _buildDot(index)),
           ),
-          currentIndex == 2
-              ? GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MainScreen()));
-                  },
-                  child: Container(
-                    height: 60,
-                    width: 60,
-                    margin: EdgeInsets.only(left: 5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.blueAccent,
-                    ),
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.white,
-                    ),
-                  ),
-                )
-              : Container(),
+          GestureDetector(
+            onTap: () {
+              // pagevievning controlleri orqali boshqarilyabdi,
+              // button bosilganda pageviev 0 dan 1 ga o'tyabdi
+              if (_pageController.hasClients && currentIndex == 0) {
+                _pageController.animateToPage(1,
+                    duration: Duration(microseconds: 500),
+                    curve: Curves.easeIn);
+                print('1');
+              }
+
+              // button bosilganda pageviev 1 dan 2 ga o'tyabdi
+              if (_pageController.hasClients && currentIndex == 1) {
+                print('2');
+                _pageController.animateToPage(2,
+                    duration: Duration(microseconds: 500),
+                    curve: Curves.easeIn);
+              }
+
+              // button bosilganda pageviev 2 dan home page ga o'tyabdi
+              if (currentIndex == 2) {
+                print('3');
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainScreen()),
+                  (route) => false,
+                );
+              }
+            },
+            child: Container(
+              height: 60,
+              width: 60,
+              margin: EdgeInsets.only(left: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.blueAccent,
+              ),
+              child: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.white,
+              ),
+            ),
+          ),
         ],
       ),
     );

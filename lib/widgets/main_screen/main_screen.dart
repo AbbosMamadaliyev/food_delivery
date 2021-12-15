@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/widgets/home_page/home_page.dart';
 
 class MainScreen extends StatefulWidget {
+  static String id = '/mainScreen';
   const MainScreen({Key? key}) : super(key: key);
 
   @override
