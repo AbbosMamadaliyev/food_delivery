@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:food_delivery/widgets/main_screen/main_screen.dart';
+import 'package:food_delivery/widgets/login/login_screen.dart';
 import 'package:food_delivery/widgets/splash_screen/body/splash_body.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -113,7 +113,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 print('3');
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => MainScreen()),
+                  MaterialPageRoute(builder: (context) => Login()),
                   (route) => false,
                 );
               }
