@@ -2,6 +2,8 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/widgets/login/components/forgot_password_text_button.dart';
+import 'package:food_delivery/widgets/login/components/sign_in_text.dart';
 import 'package:food_delivery/widgets/main_screen/main_screen.dart';
 
 class SignInFields extends StatefulWidget {
@@ -41,7 +43,7 @@ class _SignInFieldsState extends State<SignInFields> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 48),
             child: Column(
               children: [
-                _buildTextSignin(),
+                SignInText(),
                 const SizedBox(height: 36),
                 Form(
                   key: _formKey,
@@ -53,9 +55,12 @@ class _SignInFieldsState extends State<SignInFields> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 18),
-                _buildTextForgotPassword(),
-                const SizedBox(height: 18),
+                ForgotPassTextButton(),
+                /*LoginButton(
+                  passwordDone: passwordDone,
+                  loginDone: loginDone,
+                  formKey: _formKey,
+                ),*/
                 _buildLoginButton()
               ],
             ),
@@ -96,24 +101,6 @@ class _SignInFieldsState extends State<SignInFields> {
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
-    );
-  }
-
-  Widget _buildTextForgotPassword() {
-    return Text(
-      'Forgot password ? ',
-      style: TextStyle(
-        color: Colors.grey,
-        fontWeight: FontWeight.bold,
-        fontSize: 17,
-      ),
-    );
-  }
-
-  Widget _buildTextSignin() {
-    return const Text(
-      'Sign in',
-      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
     );
   }
 
