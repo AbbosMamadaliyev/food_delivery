@@ -61,7 +61,7 @@ class _SignInFieldsState extends State<SignInFields> {
                   loginDone: loginDone,
                   formKey: _formKey,
                 ),*/
-                _buildLoginButton()
+                _buildLoginButton(),
               ],
             ),
           ),
@@ -126,6 +126,7 @@ class _SignInFieldsState extends State<SignInFields> {
           validator: (value) {
             final regUpper = RegExp('[A-Z]');
             final regLower = RegExp('[a-z]');
+            final numReg = RegExp('[0-9]');
 
             if (value!.isEmpty) {
               final snackBar = SnackBar(
@@ -136,6 +137,7 @@ class _SignInFieldsState extends State<SignInFields> {
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             } else if (!(regUpper.hasMatch(value) &&
                 regLower.hasMatch(value) &&
+                numReg.hasMatch(value) &&
                 value.length > 6)) {
               loginDone = false;
 
